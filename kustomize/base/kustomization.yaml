@@ -8,4 +8,4 @@ namespace: hello-gitops
 images:
 - name: hello-gitops
   newName: cxtsiacr.azurecr.io/wannabe_obs_director
-  newTag: 5110a570e75ae903731c6a043b44464b7b81b283
+  newTag: 76d8eddc1c64b171680cc6dd318b001375597868
