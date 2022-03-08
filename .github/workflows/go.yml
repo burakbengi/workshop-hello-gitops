@@ -44,8 +44,8 @@ jobs:
             username: ${{ secrets.REGISTRY_USERNAME }}
             password: ${{ secrets.REGISTRY_PASSWORD }}
         - run: |
-            docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
-            docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
+            docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ env.CONTAINER_NAME }}:${{ github.sha }}
+            docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ env.CONTAINER_NAME }}:${{ github.sha }}
             
     deploy:
       name: Deploy
@@ -62,10 +62,10 @@ jobs:
 
       - name: Update Kubernetes resources
         env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
         run: |
          cd kustomize/base
-         kustomize edit set image hello-gitops=$DOCKER_USERNAME/hello-gitops:$GITHUB_SHA
+         kustomize edit set image hello-gitops=$REGISTRY_USERNAME/${{ env.CONTAINER_NAME }}:${{ github.sha }}
          cat kustomization.yaml
 
       - name: Commit files
