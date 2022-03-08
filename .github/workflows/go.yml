@@ -22,7 +22,7 @@ on:
   workflow_dispatch:
 
 env:
-  CONTAINER_NAME: "Wannabe OBS Director"
+  CONTAINER_NAME: "Wannabe_OBS_Director"
 
 jobs:
     build-and-push:
