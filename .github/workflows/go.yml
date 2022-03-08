@@ -44,8 +44,8 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
-          docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ env.CONTAINER_NAME }}:${{ github.sha }}
-          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ env.CONTAINER_NAME }}:${{ github.sha }}
+          docker build . -t cxtsiacr.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
+          docker push cxtsiacr.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
             
     deploy:
       needs: build-and-push
