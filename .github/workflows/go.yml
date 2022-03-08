@@ -16,9 +16,9 @@
 name: Build and push an app to AKS
 
 on:
-#  push:
-#    branches:
-#      - main
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 env:
@@ -71,11 +71,9 @@ jobs:
           kustomize-version: "3.6.1"
 
       - name: Update Kubernetes resources
-        env:
-          REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
         run: |
          cd kustomize/base
-         kustomize edit set image hello-gitops=$REGISTRY_USERNAME/${{ env.CONTAINER_NAME }}:${{ github.sha }}
+         kustomize edit set image hello-gitops=${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ env.CONTAINER_NAME }}:${{ github.sha }}
          cat kustomization.yaml
 
       - name: Commit files
