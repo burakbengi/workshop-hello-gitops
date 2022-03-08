@@ -22,7 +22,7 @@ on:
   workflow_dispatch:
 
 env:
-  CONTAINER_NAME: "Wannabe_OBS_Director"
+  CONTAINER_NAME: "wannabe_obs_director"
 
 jobs:
     build-and-push:
@@ -48,13 +48,13 @@ jobs:
       
       - uses: azure/docker-login@v1
         with:
-          login-server: cxtsiacr.azurecr.io
+          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - run: |
-          docker build . -t cxtsiacr.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
-          docker push cxtsiacr.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
+          docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ env.CONTAINER_NAME }}:${{ github.sha }}
+          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ env.CONTAINER_NAME }}:${{ github.sha }}
 
     deploy:
       needs: build-and-push
