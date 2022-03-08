@@ -8,4 +8,4 @@ namespace: hello-gitops
 images:
 - name: hello-gitops
   newName: d6bf755a-741f-4ed1-ad1c-b5195df5cb96/wannabe_obs_director
-  newTag: 8c7c0ccf220a83994bcc0b237a8774fe2bb9e4fd
+  newTag: e44bb1955bc0985150f7d0c3111fd08c5470ed1d
