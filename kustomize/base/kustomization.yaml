@@ -7,5 +7,5 @@ resources:
 namespace: hello-gitops
 images:
 - name: hello-gitops
-  newName: d6bf755a-741f-4ed1-ad1c-b5195df5cb96/Wannabe_OBS_Director
-  newTag: 2e871b6e9f6e80d9141a86eb8dcb39c9d475b101
+  newName: d6bf755a-741f-4ed1-ad1c-b5195df5cb96/wannabe_obs_director
+  newTag: 8c7c0ccf220a83994bcc0b237a8774fe2bb9e4fd
