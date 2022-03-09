@@ -21,7 +21,7 @@ func Test_handler(t *testing.T) {
 	}{
 		{
 			"status OK",
-			args{"/", http.StatusOK, fmt.Sprintf("Hello from new argocd deployed %s", host)},
+			args{"/", http.StatusOK, fmt.Sprintf("Hello from a different project %s", host)},
 		},
 	}
 
